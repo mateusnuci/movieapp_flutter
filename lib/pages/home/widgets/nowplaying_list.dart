@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/models/movie_model.dart';
 import 'package:movie_app/widgets/custom_card_thumbnail.dart';
+import 'package:movie_app/pages/details/movie_detail_page.dart';
 
 class NowPlayingList extends StatefulWidget {
   final List<Movie> movies;
@@ -21,23 +22,36 @@ class _NowPlayingListState extends State<NowPlayingList> {
     return Column(
       children: [
         SizedBox(
-            height: MediaQuery.of(context).size.height * 0.5,
-            child: PageView.builder(
-              controller: _pageController,
-              onPageChanged: (int page) {
-                setState(() {
-                  currentPage = page;
-                });
-              },
-              itemCount: widget.movies.length > maxItems
-                  ? maxItems
-                  : widget.movies.length,
-              itemBuilder: (context, index) {
-                return CustomCardThumbnail(
+          height: MediaQuery.of(context).size.height * 0.5,
+          child: PageView.builder(
+            controller: _pageController,
+            onPageChanged: (int page) {
+              setState(() {
+                currentPage = page;
+              });
+            },
+            itemCount: widget.movies.length > maxItems
+                ? maxItems
+                : widget.movies.length,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  // Redireciona para a página de detalhes ao clicar
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          MovieDetailPage(movie: widget.movies[index]),
+                    ),
+                  );
+                },
+                child: CustomCardThumbnail(
                   imageAsset: widget.movies[index].posterPath,
-                );
-              },
-            )),
+                ),
+              );
+            },
+          ),
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: _buildPageIndicators(),

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/models/movie_model.dart';
 import 'package:movie_app/pages/details/movie_detail_page.dart';
 
-
 class MoviesHorizontalList extends StatelessWidget {
   final List<Movie> movies;
 
-  const MoviesHorizontalList({Key? key, required this.movies}) : super(key: key);
+  const MoviesHorizontalList({Key? key, required this.movies})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,6 @@ class MoviesHorizontalList extends StatelessWidget {
           final movie = movies[index];
           return GestureDetector(
             onTap: () {
-              // Navegando para a tela de detalhes do filme
               Navigator.push(
                 context,
                 MaterialPageRoute(

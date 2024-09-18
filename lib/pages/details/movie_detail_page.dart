@@ -66,6 +66,7 @@ class MovieDetailPage extends StatelessWidget {
               movie.popularity.toString(),
               style: const TextStyle(fontSize: 16),
             ),
+            const SizedBox(height: 20),
           ],
         ),
       ),
