@@ -51,4 +51,6 @@ class ApiServices {
     }
     throw Exception('failed to load now playing movies');
   }
+
+
 }
