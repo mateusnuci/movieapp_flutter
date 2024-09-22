@@ -26,7 +26,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
               paginaAtual = page;
             });
           },
-          children: const [
+          children: [
             HomePage(),
             SearchPage(),
             TopRatedPage(),
